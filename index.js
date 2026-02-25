@@ -22,11 +22,27 @@ function main() {
   logger.debug("This is a debug message");
   logger.newLine();
 
+  // Demonstrate log filtering
+  logger.info('Changing log level to "warn"...');
+  logger.setLevel("warn");
+  logger.newLine();
+
+  logger.info("This info will not show");
+  logger.warn("This warning will show");
+  logger.error("This error will show");
+  logger.debug("This debug will not show");
+  logger.newLine();
+
+  // Reset to debug level
+  logger.setLevel("debug");
+  logger.info('Log level reset to "debug"');
+  logger.newLine();
+
   // Log sample object
   const sampleData = {
     greeting: "Hello World",
     type: "demonstration",
-    features: ["logging", "formatting", "colors"],
+    features: ["logging", "formatting", "colors", "filtering"],
   };
 
   logger.logObject("Sample Data:", sampleData);

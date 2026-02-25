@@ -13,15 +13,26 @@ function formatMessage(level, message) {
   parts.push(`[${utils.capitalize(level)}]`);
   parts.push(message);
 
-  return parts.join(" ");
+  const formatted = parts.join(" ");
+
+  if (config.colors) {
+    return utils.colorize(formatted, level);
+  }
+
+  return formatted;
 }
 
 // Format header with app info
 function formatHeader() {
   const title = `${config.appName} v${config.version}`;
   const line = utils.separator(title.length + 4);
+  const header = `${line}\n  ${title}\n${line}`;
 
-  return `${line}\n  ${title}\n${line}`;
+  if (config.colors) {
+    return utils.colorize(header, "header");
+  }
+
+  return header;
 }
 
 // Format object for display

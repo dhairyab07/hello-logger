@@ -26,7 +26,7 @@ function main() {
   const sampleData = {
     greeting: "Hello World",
     type: "demonstration",
-    features: ["logging", "formatting", "modular design"],
+    features: ["logging", "formatting", "colors"],
   };
 
   logger.logObject("Sample Data:", sampleData);

@@ -10,6 +10,14 @@ const colors = {
   header: "\x1b[32m",
 };
 
+// Log level priority
+const levelPriority = {
+  error: 0,
+  warn: 1,
+  info: 2,
+  debug: 3,
+};
+
 // Get current timestamp
 function getTimestamp() {
   return new Date().toISOString();
@@ -36,11 +44,18 @@ function colorize(text, level) {
   return `${color}${text}${colors.reset}`;
 }
 
+// Check if level should be logged
+function shouldLog(level, activeLevel) {
+  return levelPriority[level] <= levelPriority[activeLevel];
+}
+
 module.exports = {
   getTimestamp,
   capitalize,
   repeat,
   separator,
   colorize,
+  shouldLog,
   colors,
+  levelPriority,
 };
